@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vuejs-app-deployment
+  labels:
+    app: vuejs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vuejs-app
+  template:
+    metadata:
+      labels:
+        app: vuejs-app
+    spec:
+      containers:
+      - name: vuejs-app
+        image: myvueapp.azurecr.io/my-vue-app:latest # Use your ACR login server and image tag
+        ports:
+        - containerPort: 80
+
